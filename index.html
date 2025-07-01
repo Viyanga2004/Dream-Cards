@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive Gift Card Offers | Limited Time</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .countdown {
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 15px 25px;
+            display: inline-block;
+            margin: 1rem 0;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease;
+        }
+        
+        .intro p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        /* Offers Grid */
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 3rem;
+        }
+        
+        .offer-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.5s ease;
+            position: relative;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .offer-image {
+            height: 120px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .offer-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff4757;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+        
+        .offer-content {
+            padding: 20px;
+        }
+        
+        .offer-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .offer-value {
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .offer-description {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(90deg, #2575fc 0%, #6a11cb 100%);
+            transform: scale(1.05);
+        }
+        
+        .cta-button:after {
+            content: "→";
+            position: absolute;
+            right: 15px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover:after {
+            right: 20px;
+            opacity: 1;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .testimonial {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial:before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: rgba(0,0,0,0.1);
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #6a11cb;
+        }
+        
+        /* FAQ */
+        .faq {
+            margin-bottom: 3rem;
+        }
+        
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            padding: 15px 20px;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: linear-gradient(90deg, #2575fc 0%, #6a11cb 100%);
+        }
+        
+        .faq-question:after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question.active:after {
+            content: '-';
+        }
+        
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer.show {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 2rem 0;
+        }
+        
+        .trust-badge {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .trust-badge i {
+            color: #6a11cb;
+            font-size: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #3498db;
+        }
+        
+        .social-icons {
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #3498db;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(90deg, #ff4757 0%, #e84118 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: none;
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials {
+                padding: 2rem 1rem;
+            }
+            
+            .offer-image {
+                height: 100px;
+                font-size: 2rem;
+            }
+            
+            .floating-cta {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Exclusive Gift Card Offers</h1>
+            <p class="subtitle">Limited time only - Claim your free gift cards today!</p>
+            <div class="countdown" id="countdown">
+                <i class="fas fa-clock"></i> Time remaining: <span id="timer">24:00:00</span>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="intro">
+            <h2>Unlock Amazing Rewards</h2>
+            <p>We've partnered with top brands to bring you these exclusive gift card offers. Simply click on any offer below to claim your reward. Quantities are limited, so act fast!</p>
+            
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>100% Secure</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-bolt"></i>
+                    <span>Instant Delivery</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-users"></i>
+                    <span>500,000+ Happy Users</span>
+                </div>
+            </div>
+        </section>
+        
+        <section class="offers-grid">
+            <!-- Offer 1 -->
+            <div class="offer-card" style="animation-delay: 0.1s;">
+                <div class="offer-image" style="background-color: #00D632;">
+                    CashApp
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">CashApp</h3>
+                    <div class="offer-value">$750</div>
+                    <p class="offer-description">Get $750 in your CashApp account. Use it to send money, invest, or buy Bitcoin.</p>
+                    <a href="https://nx2bs.com/c?o=104&a=20331" class="cta-button">CLAIM NOW</a>
+                </div>
+            </div>
+            
+            <!-- Offer 2 -->
+            <div class="offer-card" style="animation-delay: 0.2s;">
+                <div class="offer-image" style="background-color: #00D632;">
+                    CashApp
+                    <div class="offer-badge">POPULAR</div>
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Cash App</h3>
+                    <div class="offer-value">$850</div>
+                    <p class="offer-description">Limited time offer! Get $850 in your CashApp account today.</p>
+                    <a href="https://nx2bs.com/c?o=103&a=20331" class="cta-button">CLAIM NOW</a>
+                </div>
+            </div>
+            
+            <!-- Offer 3 -->
+            <div class="offer-card" style="animation-delay: 0.3s;">
+                <div class="offer-image" style="background-color: #003B64; color: #FFD700;">
+                    Best Buy
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Best Buy</h3>
+                    <div class="offer-value">$100</div>
+                    <p class="offer-description">$100 Best Buy gift card for all your tech and electronics needs.</p>
+                    <a href="https://nx2bs.com/c?o=102&a=20331" class="cta-button">CLAIM NOW</a>
+                </div>
+            </div>
+            
+            <!-- Offer 4 -->
+            <div class="offer-card" style="animation-delay: 0.4s;">
+                <div class="offer-image" style="background-color: #00D632;">
+                    CashApp
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">CashApp</h3>
+                    <div class="offer-value">$250</div>
+                    <p class="offer-description">Instant $250 CashApp credit. Use it however you want!</p>
+                    <a href="https://nx2bs.com/c?o=101&a=20331" class="cta-button">CLAIM NOW</a>
+                </div>
+            </div>
+            
+            <!-- Offer 5 -->
+            <div class="offer-card" style="animation-delay: 0.5s;">
+                <div class="offer-image" style="background-color: #E31837; color: white;">
+                    Costco
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Costco</h3>
+                    <div class="offer-value">$100</div>
+                    <p class="offer-description">$100 Costco gift card for all your bulk shopping needs.</p>
+                    <a href="https://nx2bs.com/c?o=100&a=20331" class="cta-button">CLAIM NOW</a>
+                </div>
+            </div>
+            
+            <!-- Offer 6 -->
+            <div class="offer-card" style="animation-delay: 0.6s;">
+                <div class="offer-image" style="background-color: #113CCF; color: white;">
+                    Disney
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Disney</h3>
+                    <div class="offer-value">$100</div>
+                    <p class="offer-description">$100 Disney gift card for movies, merchandise, or Disney+.</p>
+                    <a href="https://nx2bs.com/c?o=99&a=20331" class="cta-button">CLAIM NOW</a>
+                </div>
+            </div>
+            
+            <!-- Offer 7 -->
+            <div class="offer-card" style="animation-delay: 0.7s;">
+                <div class="offer-image" style="background-color: #60B046; color: white;">
+                    Dollar Tree
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Dollar Tree</h3>
+                    <div class="offer-value">$100</div>
+                    <p class="offer-description">$100 to spend at Dollar Tree - everything's just $1!</p>
+                    <a href="https://nx2bs.com/c?o=98&a=20331" class="cta-button">CLAIM NOW</a>
+                </div>
+            </div>
+            
+            <!-- Offer 8 -->
+            <div class="offer-card" style="animation-delay: 0.8s;">
+                <div class="offer-image" style="background-color: #1877F2; color: white;">
+                    Facebook Pay
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Facebook Pay</h3>
+                    <div class="offer-value">$100</div>
+                    <p class="offer-description">$100 credit for Facebook Pay to send money to friends or shop.</p>
+                    <a href="https://nx2bs.com/c?o=96&a=20331" class="cta-button">CLAIM NOW</a>
+                </div>
+            </div>
+            
+            <!-- Offer 9 -->
+            <div class="offer-card" style="animation-delay: 0.9s;">
+                <div class="offer-image" style="background-color: #FFD700; color: #333;">
+                    <i class="fas fa-gas-pump"></i>
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Gas Gift Card</h3>
+                    <div class="offer-value">$250</div>
+                    <p class="offer-description">$250 gas gift card valid at most major gas stations.</p>
+                    <a href="https://nx2bs.com/c?o=95&a=20331" class="cta-button">CLAIM NOW</a>
+                </div>
+            </div>
+            
+            <!-- Offer 10 -->
+            <div class="offer-card" style="animation-delay: 1.0s;">
+                <div class="offer-image" style="background-color: #8BC34A; color: white;">
+                    <i class="fas fa-shopping-basket"></i>
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Grocery Gift Card</h3>
+                    <div class="offer-value">$100</div>
+                    <p class="offer-description">$100 gift card valid at most major grocery stores.</p>
+                    <a href="https://nx2bs.com/c?o=94&a=20331" class="cta-button">CLAIM NOW</a>
+                </div>
+            </div>
+            
+            <!-- Offer 11 -->
+            <div class="offer-card" style="animation-delay: 1.1s;">
+                <div class="offer-image" style="background-color: #FF5722; color: white;">
+                    <i class="fas fa-trophy"></i>
+                    <div class="offer-badge">SPECIAL</div>
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Win $10,000</h3>
+                    <div class="offer-value">Grand Prize</div>
+                    <p class="offer-description">Enter for a chance to win $10,000 cash! No purchase necessary.</p>
+                    <a href="https://nx2bs.com/c?o=93&a=20331" class="cta-button">ENTER NOW</a>
+                </div>
+            </div>
+            
+            <!-- Offer 12 -->
+            <div class="offer-card" style="animation-delay: 1.2s;">
+                <div class="offer-image" style="background-color: #E32027; color: white;">
+                    Kroger
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Kroger</h3>
+                    <div class="offer-value">$100</div>
+                    <p class="offer-description">$100 Kroger gift card for groceries and more.</p>
+                    <a href="https://nx2bs.com/c?o=92&a=20331" class="cta-button">CLAIM NOW</a>
+                </div>
+            </div>
+            
+            <!-- Offer 13 -->
+            <div class="offer-card" style="animation-delay: 1.3s;">
+                <div class="offer-image" style="background-color: #FF00BF; color: white;">
+                    Lyft
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Lyft</h3>
+                    <div class="offer-value">$100</div>
+                    <p class="offer-description">$100 Lyft credit for your next rides.</p>
+                    <a href="https://nx2bs.com/c?o=90&a=20331" class="cta-button">CLAIM NOW</a>
+                </div>
+            </div>
+            
+            <!-- Offer 14 -->
+            <div class="offer-card" style="animation-delay: 1.4s;">
+                <div class="offer-image" style="background: linear-gradient(90deg, #EB001B 0%, #F79E1B 100%); color: white;">
+                    <i class="fab fa-cc-mastercard"></i>
+                    <div class="offer-badge">FLEXIBLE</div>
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">MasterCard</h3>
+                    <div class="offer-value">$100</div>
+                    <p class="offer-description">$100 prepaid MasterCard - use it anywhere MasterCard is accepted.</p>
+                    <a href="https://nx2bs.com/c?o=88&a=20331" class="cta-button">CLAIM NOW</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="testimonials">
+            <h2>What People Are Saying</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">I couldn't believe it when I got my $750 CashApp credit! It was so easy and took less than 2 minutes. Thank you!</p>
+                    <p class="testimonial-author">- Sarah J., Miami</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">The $100 Best Buy card came just in time for me to buy new headphones. This is legit and I'm telling all my friends!</p>
+                    <p class="testimonial-author">- Michael T., Dallas</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">I was skeptical at first but the $250 gas card was exactly what I needed with prices so high right now. Will definitely use again.</p>
+                    <p class="testimonial-author">- Jennifer L., Chicago</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How do I claim my gift card?</div>
+                <div class="faq-answer">
+                    <p>Simply click on the "CLAIM NOW" button for the offer you're interested in and follow the instructions on the next page. Most offers require you to complete a quick survey or sign up for a free trial.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Is there any cost to participate?</div>
+                <div class="faq-answer">
+                    <p>No! All of our offers are completely free to participate in. Some offers may require you to sign up for a free trial, but you can cancel before being charged if you don't want to continue.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How long does it take to receive my gift card?</div>
+                <div class="faq-answer">
+                    <p>Most digital gift cards are delivered instantly via email after completing the requirements. Physical cards may take 2-4 weeks for delivery.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Are there any restrictions on using the gift cards?</div>
+                <div class="faq-answer">
+                    <p>Gift cards are subject to the terms and conditions of the issuing company. Most have no restrictions and can be used just like cash at the specified retailers.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I claim multiple offers?</div>
+                <div class="faq-answer">
+                    <p>Yes! You're welcome to participate in as many offers as you like, though some may limit one per household.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+            <a href="#">FAQ</a>
+        </div>
+        <p class="copyright">© 2023 Exclusive Gift Card Offers. All rights reserved.</p>
+    </footer>
+    
+    <a href="#countdown" class="floating-cta">Limited Time Offers!</a>
+    
+    <script>
+        // Countdown Timer
+        function startTimer(duration, display) {
+            let timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                
+                display.textContent = hours + ":" + minutes + ":" + seconds;
+                
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+        
+        window.onload = function () {
+            const twentyFourHours = 24 * 60 * 60;
+            const display = document.querySelector('#timer');
+            startTimer(twentyFourHours, display);
+            
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    question.classList.toggle('active');
+                    const answer = question.nextElementSibling;
+                    answer.classList.toggle('show');
+                    
+                    // Close other open answers
+                    faqQuestions.forEach(q => {
+                        if (q !== question && q.classList.contains('active')) {
+                            q.classList.remove('active');
+                            q.nextElementSibling.classList.remove('show');
+                        }
+                    });
+                });
+            });
+            
+            // Animate offer cards when they come into view
+            const offerCards = document.querySelectorAll('.offer-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            offerCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Track link clicks
+            document.querySelectorAll('a[href^="https://nx2bs.com"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const href = this.href;
+                    // Here you would typically send tracking data to your analytics platform
+                    console.log('Offer clicked:', href);
+                    // Redirect after tracking
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 200);
+                });
+            });
+            
+            // Show floating CTA when scrolling
+            window.addEventListener('scroll', function() {
+                const floatingCTA = document.querySelector('.floating-cta');
+                if (window.scrollY > 500) {
+                    floatingCTA.style.display = 'block';
+                } else {
+                    floatingCTA.style.display = 'none';
+                }
+            });
+        };
+    </script>
+</body>
+</html>
